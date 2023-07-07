@@ -1,0 +1,236 @@
+{% extends "dashboard/dbskeleton.html" %}
+{% block content %}
+
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Strategy</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('home2') }}">Home</a></li>
+        <li class="breadcrumb-item active">Strategy</li>
+        <li style="display: none;" id="stock-symbol">MRF.NS</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section dashboard">
+    <div class="row">
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+        <div class="row">
+
+
+          <!-- Reports -->
+          <div class="col-12">
+            <div class="card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Line Chart</a></li>
+                  <li><a class="dropdown-item" href="#">Candle Stick Chart</a></li>
+                  <li><a class="dropdown-item" href="#"></a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"> ONONON <span>/Today</span></h5>
+
+                <!-- Line Chart -->
+                <div id="reportsChart"></div>
+
+              </div>
+            </div>
+          </div>
+          <!-- End Reports -->
+
+
+    
+
+        </div>
+      </div>
+      <!-- End Left side columns -->
+
+      <!-- Right side columns -->
+      <div class="col-lg-4">
+        <!-- Assistant -->
+        <div class="card">
+
+          <div class="card-body">
+            <h5 class="card-title">Assistant &nbsp; <i class="bi bi-robot"></i> </h5>
+            <div class="chat">
+              <div class="chat-content clearfix">
+                <span class="friend last">
+                  Hi, How Can I help you?
+                  <span class="time">
+                    7:30 PM
+                  </span>
+                </span>
+                <span class="you first">
+                  Which is the costliest share in the Indian share market?
+                  <span class="time">
+                    7:31 PM
+                  </span>
+                </span>
+                <span class="friend last">
+                  MRF is the costliest share in the Indian share market !
+                  <span class="time">
+                    7:31 PM
+                  </span>
+                </span>
+                <br>
+              </div>
+
+              <div class="msg-box">
+                <input type="text" class="ip-msg" placeholder="type something..">
+                <span class="btn-group">
+                  <i class="ri-send-plane-fill"></i>
+                  <i class="bi bi-paperclip"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- End Assistant  -->
+
+
+
+        <!-- Share holder distribution  -->
+        <div class="card">
+
+            <div class="card-body pb-0">
+              <h5 class="card-title"> Your Portfolio distribution   <span></span></h5>
+  
+              <div id="trafficChart" style="min-height: 400px" class="echart"></div>
+  
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts
+                    .init(document.querySelector("#trafficChart"))
+                    .setOption({
+                      tooltip: {
+                        trigger: "item",
+                      },
+                      legend: {
+                        top: "5%",
+                        left: "center",
+                      },
+                      series: [
+                        {
+                          name: "Access From",
+                          type: "pie",
+                          radius: ["40%", "70%"],
+                          avoidLabelOverlap: false,
+                          label: {
+                            show: false,
+                            position: "center",
+                          },
+                          emphasis: {
+                            label: {
+                              show: true,
+                              fontSize: "18",
+                              fontWeight: "bold",
+                            },
+                          },
+                          labelLine: {
+                            show: false,
+                          },
+                          data: [
+                            {
+                              value: 20,
+                              name: "Auto",
+                            },
+                            {
+                              value: 25,
+                              name: "Tech",
+                            },
+                            {
+                              value: 55,
+                              name: "Health care",
+                            }
+                          ],
+                        },
+                      ],
+                    });
+                });
+              </script>
+            </div>
+          </div>
+          <!-- End Share holder distribution  -->
+
+
+<!-- News & Updates Traffic -->
+<div class="card">  
+    <div class="card-body pb-0">
+      <h5 class="card-title">
+        News &amp; Updates <span>| Today</span>
+      </h5>
+  
+      <div class="news">
+        <div class="post-item clearfix">
+          <img src="{{ url_for('static', filename='assets/img/news-1.jpg') }}" alt="" />
+          <h4><a href="#">Indian Stock Market Update: Sensex crosses 60,000 mark</a></h4>
+          <p>
+            The Indian stock market witnessed a historic moment as the Sensex crossed the 60,000 mark for the first time. Experts predict further growth in the coming months.
+          </p>
+        </div>
+  
+        <div class="post-item clearfix">
+          <img src="{{ url_for('static', filename='assets/img/news-2.jpg') }}" alt="" />
+          <h4><a href="#">Top Stocks to Watch: Reliance Industries, Tata Motors, HDFC Bank</a></h4>
+          <p>
+            Here are the top stocks that investors should keep an eye on today. Reliance Industries, Tata Motors, and HDFC Bank are expected to show positive performance.
+          </p>
+        </div>
+  
+        <div class="post-item clearfix">
+          <img src="{{ url_for('static', filename='assets/img/news-3.jpg') }}" alt="" />
+          <h4>
+            <a href="#">SEBI announces new regulations for stock market participants</a>
+          </h4>
+          <p>
+            The Securities and Exchange Board of India (SEBI) has introduced new regulations to ensure transparency and protect investors in the stock market.
+          </p>
+        </div>
+  
+        <div class="post-item clearfix">
+          <img src="{{ url_for('static', filename='assets/img/news-4.jpg') }}" alt="" />
+          <h4><a href="#">RBI cuts repo rate, boosts market sentiment</a></h4>
+          <p>
+            The Reserve Bank of India (RBI) has announced a repo rate cut, which is expected to boost market sentiment and encourage investments in the stock market.
+          </p>
+        </div>
+  
+        <div class="post-item clearfix">
+          <img src="{{ url_for('static', filename='assets/img/news-5.jpg') }}" alt="" />
+          <h4>
+            <a href="#">Stock Market Analysis: Nifty 50 shows bullish trend</a>
+          </h4>
+          <p>
+            The Nifty 50 index has shown a bullish trend, indicating positive market sentiment and potential opportunities for investors in the Indian stock market.
+          </p>
+        </div>
+      </div>
+      <!-- End sidebar recent posts-->
+    </div>
+  </div>
+  <!-- End News & Updates -->
+      </div>
+      <!-- End Right side columns -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->
+
+
+
+
+<script src="https://unpkg.com/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
+<script src="{{ url_for('static', filename='assets/js/chart.js') }}"></script>
+
+{% endblock content %}

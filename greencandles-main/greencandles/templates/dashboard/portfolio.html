@@ -1,0 +1,306 @@
+{% extends "dashboard/dbskeleton.html" %}
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Portfolio</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{}">Home</a></li>
+          <li class="breadcrumb-item active">Portfolio</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+
+            <!-- Portfolio Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Total Investment <span></span>
+                  </h5>
+
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                    >
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>50,264</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Portfolio Card -->
+            
+            
+            
+            <!-- Portfolio Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+                
+                
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Current Value <span></span>
+                  </h5>
+                  
+                  <div class="d-flex align-items-center">
+                    <div
+                    class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                    >
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>55,512</h6> 
+                      <span class="text-success small pt-1 fw-bold">10%</span>
+                      <span class="text-muted small pt-2 ps-1">increase</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Portfolio Card -->
+            
+            
+            
+                        <!-- Portfolio Card -->
+                        <div class="col-xxl-4 col-md-6">
+                          <div class="card info-card revenue-card">
+            
+            
+                            <div class="card-body">
+                              <h5 class="card-title">
+                                Net P & L  <span></span>
+                              </h5>
+            
+                              <div class="d-flex align-items-center">
+                                <div
+                                  class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                                >
+                                  <i class="bi bi-currency-dollar"></i>
+                                </div>
+                                <div class="ps-3">
+                                  <h6>5,004</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End Portfolio Card -->
+            
+            <!-- Reports -->
+            <div class="col-12">
+              <div class="card">
+ 
+                <div class="card-body">
+                  <h5 class="card-title">Portfolio <span></span></h5>
+
+                  <!-- Line Chart -->
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(
+                        document.querySelector("#reportsChart"),
+                        {
+                          series: [
+                            {
+                              name: "MRF",
+                              data: [3, 17, 31, 45, 59, 73, 80],
+                            },
+                            {
+                              name: "TCS",
+                              data: [2, 15, 28, 42, 27,25,25],
+                            },
+                            {
+                              name: "SBI",
+                              data:  [2, 14, 26, 38, 50, 55, 57],
+                            },
+                          ],
+                          chart: {
+                            height: 350,
+                            type: "area",
+                            toolbar: {
+                              show: false,
+                            },
+                          },
+                          markers: {
+                            size: 4,
+                          },
+                          colors: ["#4154f1", "#2eca6a", "#ff771d"],
+                          fill: {
+                            type: "gradient",
+                            gradient: {
+                              shadeIntensity: 1,
+                              opacityFrom: 0.3,
+                              opacityTo: 0.4,
+                              stops: [0, 90, 100],
+                            },
+                          },
+                          dataLabels: {
+                            enabled: false,
+                          },
+                          stroke: {
+                            curve: "smooth",
+                            width: 2,
+                          },
+                          xaxis: {
+                            type: "datetime",
+                            categories: [
+                              "2023-06-19",
+                              "2023-06-20",
+                              "2023-06-21",
+                              "2023-06-22",
+                              "2023-06-23",
+                              "2023-06-24",
+                              "2023-06-25",
+                            ],
+                          },
+                          tooltip: {
+                            x: {
+                              format: "dd/MM/yy HH:mm",
+                            },
+                          },
+                        }
+                      ).render();
+                    });
+                  </script>
+                  <!-- End Line Chart -->
+                </div>
+              </div>
+            </div>
+            <!-- End Reports -->
+
+
+          </div>
+        </div>
+        <!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+                  <!-- Assistant -->
+        <div class="card">
+
+          <div class="card-body">
+            <h5 class="card-title">Assistant &nbsp; <i class="bi bi-robot"></i> </h5>
+            <div class="chat">
+              <div class="chat-content clearfix">
+                <span class="friend last">
+                  Hi, How Can I help you?
+                  <span class="time">
+                    7:30 PM
+                  </span>
+                </span>
+                <span class="you first">
+                  Which is the costliest share in the Indian share market?
+                  <span class="time">
+                    7:31 PM
+                  </span>
+                </span>
+                <span class="friend last">
+                  MRF is the costliest share in the Indian share market !
+                  <span class="time">
+                    7:31 PM
+                  </span>
+                </span>
+                <br>
+              </div>
+
+              <div class="msg-box">
+                <input type="text" class="ip-msg" placeholder="type something..">
+                <span class="btn-group">
+                  <i class="ri-send-plane-fill"></i>
+                  <i class="bi bi-paperclip"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- End Assistant  -->
+
+
+        <!-- Share holder distribution  -->
+        <div class="card">
+
+          <div class="card-body pb-0">
+            <h5 class="card-title"> Your Portfolio distribution   <span></span></h5>
+
+            <div id="trafficChart" style="min-height: 400px" class="echart"></div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                echarts
+                  .init(document.querySelector("#trafficChart"))
+                  .setOption({
+                    tooltip: {
+                      trigger: "item",
+                    },
+                    legend: {
+                      top: "5%",
+                      left: "center",
+                    },
+                    series: [
+                      {
+                        name: "Access From",
+                        type: "pie",
+                        radius: ["40%", "70%"],
+                        avoidLabelOverlap: false,
+                        label: {
+                          show: false,
+                          position: "center",
+                        },
+                        emphasis: {
+                          label: {
+                            show: true,
+                            fontSize: "18",
+                            fontWeight: "bold",
+                          },
+                        },
+                        labelLine: {
+                          show: false,
+                        },
+                        data: [
+                          {
+                            value: 20,
+                            name: "Auto",
+                          },
+                          {
+                            value: 25,
+                            name: "Tech",
+                          },
+                          {
+                            value: 55,
+                            name: "Health care",
+                          }
+                        ],
+                      },
+                    ],
+                  });
+              });
+            </script>
+          </div>
+        </div>
+        <!-- End Share holder distribution  -->
+
+        </div>
+        <!-- End Right side columns -->
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+
+{% endblock content %}

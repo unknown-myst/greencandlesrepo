@@ -1,0 +1,363 @@
+{% extends "layout2.html" %}
+{% block content %}
+
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center">
+  <!-- <div class="container"> -->
+  <div class="container-fluid">
+    <div id="home-section-1">
+      <div class="container-fluid">
+        <!-- Hero -->
+        <h1 class="mt5"> &nbsp;</h1>
+        <div class="px-4 pt-5 my-5 text-center">
+          <h1 class="display-4 mb-2 fw-bold mt-5" >welcome to <span style="color: rgb(0, 187, 125);">green</span>candles</h1>
+          <div class="container">
+            <!-- <hr> -->
+          </div>
+          <div class="col-lg-6 pt-2 mx-auto">
+            <p class="lead mb-3 h3" style="font-weight: 400; ">
+              Precision, Performance, Profits
+we got you covered
+            </p>
+          </div>
+          <!-- search function -->
+          <form class="d-flex mb-3 pt-2" style="max-width: 50vw; margin: auto; position: relative">
+            <input class="form-control me-2" id="highlight-box" 
+              placeholder="Type a Company Name or Stock to Search"
+              style="box-shadow: 0 5px 30px rgb(0 187 125 / 20%)" onkeyup="myFunction()" />
+            <div class="output active">
+              <ul class="dynamic-list" id="highlight-ul"></ul>
+            </div>
+          </form>
+          <div class="bd-example">
+            Try:
+            <span class="btn btn-outline-primary badge" id="home-badge"><a href="/stock/TCS">TCS</a></span>
+            <span class="btn btn-outline-primary badge" id="home-badge"><a href="/stock/RELIANCE">Reliance</a></span>
+            <span class="btn btn-outline-primary badge" id="home-badge"><a href="/stock/SBICARD">SBI</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
+
+  <main id="main">
+ <!-- ======= About Section ======= -->
+ <section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="row gx-0">
+      <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="content">
+          <h3>Who We Are</h3>
+          <h2>
+            The Stoics
+          </h2>
+          <p>
+            we belive that our website is a valuable resource for anyone who is intrested in the stock market and we are passionate about helping people learn about the stock market and make sure that everyone has acess to the information and tools they need to suceed
+          </p>
+          <div class="text-center text-lg-start">
+            <a href="#"
+              class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center" style="background-color: #6351ce;">
+              <span>Read More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+        <img src="{{ url_for('static', filename='eassets/img/about.jpg') }}" class="img-fluid" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Section -->
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up"><!-- Feature Icons -->
+        <div class="row feature-icons" data-aos="fade-up">
+          <header class="section-header">
+          <h2>Features</h2>
+          <!-- <p>Unlocking Essential Tools for Stock Market</p> -->
+        </header>
+          <h3>Unlocking Essential Tools for Stock Market</h3>
+
+          <div class="row">
+            <div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
+              <img src="{{ url_for('static', filename='eassets/img/features11.png') }}" class="img-fluid p-4" alt="" />
+            </div>
+
+            <div class="col-xl-8 d-flex content">
+              <div class="row align-self-center gy-4">
+                <div class="col-md-6 icon-box" data-aos="fade-up">
+                  <i class="ri-line-chart-line"></i>
+                  <div>
+                    <h4>Top insights</h4>
+                    <p>
+                      Insights for both fundamental and technical anyalysis
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <i class="ri-stack-line"></i>
+                  <div>
+                    <h4>Learn Section</h4>
+                    <p>
+                      Learn from the experts abou the stock market
+
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <i class="ri-brush-4-line"></i>
+                  <div>
+                    <h4>Preactise section</h4>
+                    <p>
+                      experience real-life trading and investing
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="ri-magic-line"></i>
+                  <div>
+                    <h4>Company info</h4>
+                    <p>
+                    Detailed descriptions of the companies
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                  <i class="ri-command-line"></i>
+                  <div>
+                    <h4>Community</h4>
+                    <p>
+                      a place to share your ideas and ask questions
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                  <i class="ri-radar-line"></i>
+                  <div>
+                    <h4>Real time data</h4>
+                    <p>
+                      Real time day data of the market
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Feature Icons -->
+      </div>
+    </section>
+    <!-- End Features Section -->
+
+
+
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts">
+  <div class="container" data-aos="fade-up">
+    <header class="section-header">
+      <h2>Blog</h2>
+      <p>Recent posts form our Blog</p>
+    </header>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img">
+            <img src="{{ url_for('static', filename='eassets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="" />
+          </div>
+          <span class="post-date">Tue, September 15</span>
+          <h3 class="post-title">
+            The Power of Dividend Investing
+          </h3>
+          <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img">
+            <img src="{{ url_for('static', filename='eassets/img/blog/blog-2.png') }}" class="img-fluid" alt="" />
+          </div>
+          <span class="post-date">Fri, August 28</span>
+          <h3 class="post-title">
+            The Beginner's Guide to Stock Market Investing
+          </h3>
+          <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img">
+            <img src="{{ url_for('static', filename='eassets/img/blog/blog-3.webp') }}" class="img-fluid" alt="" />
+          </div>
+          <span class="post-date">Mon, July 11</span>
+          <h3 class="post-title">
+            Mastering Risk Management in the Stock Market
+          </h3>
+          <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Recent Blog Posts Section -->
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+    <header class="section-header">
+      <h2>Contact</h2>
+      <p>Contact Us</p>
+    </header>
+
+    <div class="row gy-4">
+      <div class="col-lg-6">
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <div class="info-box">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <p>Banglore<br />Karnataka - 91</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box">
+              <i class="bi bi-telephone"></i>
+              <h3>Call Us</h3>
+              <p>+91 9900123456<br />+91 8800123456</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Us</h3>
+              <p>greencandles@gmail.com</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box">
+              <i class="bi bi-clock"></i>
+              <h3>Open Hours</h3>
+              <p>Monday - Friday<br />9:00AM - 05:00PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <form action="/contact" method="post" class="php-email-form">
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+            </div>
+
+            <div class="col-md-6">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required />
+            </div>
+
+            <div class="col-md-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required />
+            </div>
+
+            <div class="col-md-12">
+              <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">
+                Your message has been sent. Thank you!
+              </div>
+
+              <button type="submit" style="background-color: #6351ce;">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+  </main>
+  <!-- End #main -->
+
+
+
+
+
+
+
+
+  <script>
+
+    function myFunction() {
+              // Declare variables
+              var input, filter, ul, li, a, i, txtValue;
+              input = document.getElementById('highlight-box');
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("highlight-ul");
+              li = ul.getElementsByTagName('li');
+    
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+    
+              input = document.getElementById('highlight-box');
+    
+              ul = document.getElementById("highlight-ul");
+              if (input.value.length <= 1) {
+    
+                ul.style.display = "none"
+              }
+              else {
+                ul.style.display = "block"
+              }
+            }
+    
+    
+        async function fetchListOfStocks() {
+          response = await fetch("/getListData");
+          let fetched500 = await response.json();
+          // console.log(fetched500[3])
+          ul = document.getElementById("highlight-ul");
+          str = ``
+          for (let i = 0; i < fetched500.length; i++) {
+            data = fetched500[i]
+            const regex = /\((.*?)\)/;
+            output = data.match(regex);
+            console.log(output[1])
+            str += `<li> <a href="/stocks/${output[1]}"> ${fetched500[i]} </a></li>`
+    
+          }
+          ul.innerHTML = str
+          ul = document.getElementById("highlight-ul");
+          ul.style.display = "none"
+        }
+        fetchListOfStocks()
+      </script>
+
+
+  {% endblock content %}

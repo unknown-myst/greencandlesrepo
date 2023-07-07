@@ -1,0 +1,463 @@
+{% extends "dashboard/dbskeleton.html" %}
+{% block content %}
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Stocks</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('home2') }}">Home</a></li>
+        <li class="breadcrumb-item active" id="stock-symbol">{{ stock_symbol }}</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section dashboard">
+
+    <div id="name-and-price" class="m-3">
+
+      <div id="stock-name" class="info my-3">
+        <h1 id="js-stock-name"> #####</h1>
+
+        <button type="button" class="btn btn-outline-primary"><i class="bi bi-bookmarks"></i></i>
+          Add to watchlist
+        </button>
+        <button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-left-right"></i></i> Compare
+        </button>
+
+      </div>
+
+      <div id="stock-price" class="current-price d-flex">
+        <h1 class="justify-content-center"> &#8377 <span id="js-stock-price">000</span>
+
+          <span id="js-caret"> <i class="bi bi-caret-up-fill text-success"></i> </span>
+        </h1>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+        <div class="row">
+          <!-- Sales Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+
+              <div class="card-body">
+                <h5 class="card-title">HL <span>| Today</span></h5>
+
+                <div class="align-items-center ">
+                  <p style="text-transform: uppercase;font-weight:500;"> Todays High : <span id="js-day-high">323</span>
+                  </p>
+                  <p style="text-transform: uppercase;font-weight:500;">Todays Low : <span id="js-day-low">12</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Sales Card -->
+
+          <!-- Revenue Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+
+              <div class="card-body">
+                <h5 class="card-title">
+                  HL <span>| 52 weeks</span>
+                </h5>
+                <div class="align-items-center ">
+                  <p style="text-transform: uppercase;font-weight:500;"> 52 Week High : <span id="js-52-high">323</span>
+                  </p>
+                  <p style="text-transform: uppercase;font-weight:500;">52 Week Low : <span id="js-52-low">12</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Revenue Card -->
+
+          <!-- Customers Card -->
+          <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+
+              <div class="card-body">
+                <h5 class="card-title">
+                  Bid & Ask
+                </h5>
+                <div class="align-items-center ">
+                  <p style="text-transform: uppercase;font-weight:500;"> Bid : <span id="js-bid">323</span></p>
+                  <p style="text-transform: uppercase;font-weight:500;">Ask : <span id="js-ask">12</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Customers Card -->
+
+          <!-- Reports -->
+          <div class="col-12">
+            <div class="card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Line Chart</a></li>
+                  <li><a class="dropdown-item" href="#">Candle Stick Chart</a></li>
+                  <li><a class="dropdown-item" href="#"></a></li>
+                </ul>
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-title"> {{ stock_symbol }} <span></span></h5>
+
+                <!-- Line Chart -->
+                <div id="reportsChart"></div>
+
+
+                <!-- End Line Chart -->
+              </div>
+            </div>
+          </div>
+          <!-- End Reports -->
+
+          <!-- Recent Sales -->
+          <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-title">
+                  Important Details<span> </span>
+                </h5>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="js-imp-info">
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Brandon Jacob</td>
+                      <td>Designer</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Bridie Kessler</td>
+                      <td>Developer</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Ashleigh Langosh</td>
+                      <td>Finance</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Angus Grady</td>
+                      <td>HR</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Raheem Lehner</td>
+                      <td>Dynamic Division Officer</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- End Recent Sales -->
+
+        </div>
+      </div>
+      <!-- End Left side columns -->
+
+      <!-- Right side columns -->
+      <div class="col-lg-4">
+        <!-- Recent Activity -->
+        <div class="card">
+
+          <div class="card-body">
+            <h5 class="card-title">Assistant &nbsp; <i class="bi bi-robot"></i> </h5>
+            <div class="chat">
+              <div class="chat-content clearfix">
+                <span class="friend last">
+                  Hi, How Can I help you?
+                  <span class="time">
+                    7:30 PM
+                  </span>
+                </span>
+                <span class="you first">
+                  Which is the costliest share in the Indian share market?
+                  <span class="time">
+                    7:31 PM
+                  </span>
+                </span>
+                <span class="friend last">
+                  MRF is the costliest share in the Indian share market !
+                  <span class="time">
+                    7:31 PM
+                  </span>
+                </span>
+                <br>
+              </div>
+
+              <div class="msg-box">
+                <input type="text" class="ip-msg" placeholder="type something..">
+                <span class="btn-group">
+                  <i class="ri-send-plane-fill"></i>
+                  <i class="bi bi-paperclip"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- End Recent Activity -->
+
+        <!-- Budget Report -->
+        <div class="card">
+
+          <div class="card-body pb-0">
+            <h5 class="card-title">
+              Your Notes <span></span>
+            </h5>
+
+            <div id="budgetChart" style="min-height: 400px" class="echart"></div>
+
+            <script>
+            </script>
+          </div>
+        </div>
+        <!-- End Budget Report -->
+
+        <!-- Website Traffic -->
+        <div class="card">
+
+          <div class="card-body pb-0">
+            <h5 class="card-title">Share Holding Pattern <span> </span></h5>
+
+            <div id="trafficChart" style="min-height: 400px" class="echart"></div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                echarts
+                  .init(document.querySelector("#trafficChart"))
+                  .setOption({
+                    tooltip: {
+                      trigger: "item",
+                    },
+                    legend: {
+                      top: "5%",
+                      left: "center",
+                    },
+                    series: [
+                      {
+                        name: "Access From",
+                        type: "pie",
+                        radius: ["40%", "70%"],
+                        avoidLabelOverlap: false,
+                        label: {
+                          show: false,
+                          position: "center",
+                        },
+                        emphasis: {
+                          label: {
+                            show: true,
+                            fontSize: "18",
+                            fontWeight: "bold",
+                          },
+                        },
+                        labelLine: {
+                          show: false,
+                        },
+                        data: [
+                          {
+                            value: 58,
+                            name: "Promoters",
+                          },
+                          {
+                            value: 28,
+                            name: "Institutional investors",
+                          },
+                          {
+                            value: 14,
+                            name: "Public",
+                          }
+                        ],
+                      },
+                    ],
+                  });
+              });
+            </script>
+          </div>
+        </div>
+        <!-- End Website Traffic -->
+
+        <div class="card p-3">
+
+          <h1>TEMP</h1>
+
+
+        </div>
+
+        <!-- News & Updates Traffic -->
+        <div class="card">
+          <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+
+              <li><a class="dropdown-item" href="#">Today</a></li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div>
+
+          <div class="card-body pb-0">
+            <h5 class="card-title">
+              News &amp; Updates <span>| Today</span>
+            </h5>
+
+            <div class="news">
+              <div class="post-item clearfix">
+                <img src="{{ image }}" alt="" />
+                <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                <p>
+                  Sit recusandae non aspernatur laboriosam. Quia enim
+                  eligendi sed ut harum...
+                </p>
+              </div>
+
+              <div class="post-item clearfix">
+                <img src="{{ url_for('static', filename='assets/img/news-2.jpg') }}" alt="" />
+                <h4><a href="#">Quidem autem et impedit</a></h4>
+                <p>
+                  Illo nemo neque maiores vitae officiis cum eum turos elan
+                  dries werona nande...
+                </p>
+              </div>
+
+              <div class="post-item clearfix">
+                <img src="{{ url_for('static', filename='assets/img/news-3.jpg') }}" alt="" />
+                <h4>
+                  <a href="#">Id quia et et ut maxime similique occaecati ut</a>
+                </h4>
+                <p>
+                  Fugiat voluptas vero eaque accusantium eos. Consequuntur
+                  sed ipsam et totam...
+                </p>
+              </div>
+
+              <div class="post-item clearfix">
+                <img src="{{ url_for('static', filename='assets/img/news-4.jpg') }}" alt="" />
+                <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                <p>
+                  Qui enim quia optio. Eligendi aut asperiores enim
+                  repellendusvel rerum cuder...
+                </p>
+              </div>
+
+              <div class="post-item clearfix">
+                <img src="{{ url_for('static', filename='assets/img/news-5.jpg') }}" alt="" />
+                <h4>
+                  <a href="#">Et dolores corrupti quae illo quod dolor</a>
+                </h4>
+                <p>
+                  Odit ut eveniet modi reiciendis. Atque cupiditate libero
+                  beatae dignissimos eius...
+                </p>
+              </div>
+            </div>
+            <!-- End sidebar recent posts-->
+          </div>
+        </div>
+        <!-- End News & Updates -->
+      </div>
+      <!-- End Right side columns -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->
+
+<script>
+  async function fetchstockinfo() {
+    symbol = document.getElementById('stock-symbol').innerText
+    var response = await fetch(`/getStockInfo/${symbol}`);
+    var data = await response.json();
+    data = data.replaceAll("'", '"')
+    console.log(data);
+    data = JSON.parse(data)
+    console.log(data);
+    console.log(typeof (data));
+
+
+    document.getElementById('js-stock-name').innerText = data.longName
+    currentPrice = data.currentPrice
+    document.getElementById('js-stock-price').innerText = currentPrice
+
+    previousClose = data.previousClose
+    //console.log(currentPrice,previousClose,currentPrice-previousClose);
+
+    if (currentPrice < previousClose) {
+      document.getElementById('js-caret').innerHTML = ` <i class="bi bi-caret-down-fill text-danger"></i> `
+    }
+    document.getElementById('js-stock-price').innerText = currentPrice
+
+
+
+
+    document.getElementById('js-52-high').innerText = data.fiftyTwoWeekHigh
+    document.getElementById('js-52-low').innerText = data.fiftyTwoWeekLow
+    dayhi = document.getElementById('js-day-high').innerText
+    console.log(dayhi, "FFFFOOO");
+    document.getElementById('js-day-high').innerText = data.dayHigh
+    document.getElementById('js-day-low').innerText = data.dayLow
+
+
+    document.getElementById('js-bid').innerText = data.bid
+    document.getElementById('js-ask').innerText = data.ask
+
+
+    //js-imp-table
+    imp_table = document.getElementById('js-imp-info')
+    console.log(typeof (data));
+
+    tb_content = ``
+    let i = 0;
+    Object.keys(data).forEach(key => {
+      console.log(key, data[key]);
+      tb_content += `<tr> <th scope="row"> ${i++} </th> <td> ${key}</td> <td> ${data[key]} </td> </tr>`
+    });
+    imp_table.innerHTML = tb_content
+
+    return data;
+  }
+  fetchstockinfo()
+
+
+
+</script>
+
+<script src="https://unpkg.com/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
+<script src="{{ url_for('static', filename='assets/js/chart.js') }}"></script>
+
+{% endblock content %}
