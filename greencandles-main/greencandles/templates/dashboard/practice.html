@@ -1,0 +1,347 @@
+{% extends "dashboard/dbskeleton.html" %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #portfolio {
+        margin-bottom: 30px;
+    }
+
+    #portfolioTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #portfolioTable th,
+    #portfolioTable td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #buySellForm {
+        margin-bottom: 30px;
+    }
+
+    #buySellForm label,
+    #buySellForm input {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #buyBtn,
+    #sellBtn {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    #transactions {
+        max-width: 400px;
+    }
+
+    #transactionList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #transactionList li {
+        margin-bottom: 10px;
+    }
+
+
+
+    .paper-trade.body {
+        width: 5px;
+    }
+</style>
+
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('home2') }}">Home</a></li>
+                <li class="breadcrumb-item active">Practice</li>
+                <li style="display: none;" id="stock-symbol">MRF.NS</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+
+
+                    <!-- Reports -->
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title fs-4"> <span id="symbol-name" class="fs-5">STOCK </span>: <span
+                                        id="dynamic-data-price"></span></h5>
+
+                                <!-- Line Chart -->
+                                <div id="reportsChart"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Reports -->
+
+
+
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <!-- <h5 class="card-title">Portfolio</h5> -->
+                                <div id="paper-trade">
+
+                                    <div id="portfolio" class="mt-3">
+
+
+                                        <div id="buySellForm">
+                                            <form id="transactionForm">
+                                                <div class="form-group">
+                                                    <label for="shares"> <span class="fw-bold fs-5"> Shares:
+                                                        </span></label>
+                                                    <input type="number" id="shares" class="form-control" required>
+                                                </div>
+
+                                                <button type="submit" class="btn btn-success" id="buyBtn">Buy</button>
+                                                <button type="submit" class="btn btn-danger" id="sellBtn">Sell</button>
+                                            </form>
+                                        </div>
+
+                                        <div id="transactions">
+                                            <h2>Transaction History</h2>
+                                            <ul id="transactionList" class="list-group"></ul>
+                                        </div>
+
+                                        <table id="portfolioTable" class="table table-striped">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>Symbol</th>
+                                                    <th>#Shares</th>
+                                                    <th>Price</th>
+                                                    <th>Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="practice-body">
+                                                <!-- <tr>
+                                                <th>###</th>
+                                                <th>###</th>
+                                                <th>###</th>
+                                                <th>###</th>
+                                            </tr> -->
+                                                <!-- Portfolio table rows will be dynamically generated here -->
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <h5> Invested Amount : <span id="invested-amt">0</span></h5>
+
+                                    </div>
+
+                                    <script>
+                                        document.getElementById('transactionForm').addEventListener('submit', function (event) {
+                                            event.preventDefault();
+
+                                            var symbol = document.getElementById('symbol-name').innerText;
+                                            var shares = document.getElementById('shares').value;
+                                            var price = document.getElementById('dynamic-data-price').innerText;
+
+                                            tbody = document.getElementById("practice-body")
+                                            temp_row = `               <tr>
+                                                <td> ${symbol} </td>
+                                                <td>${shares}</td>
+                                                <td>${price}</td>
+                                                <td class="td-sum">${(parseFloat(shares) * parseFloat(price)).toFixed(2)}</td>
+                                            </tr>`
+                                            tbody.innerHTML += temp_row
+                                            
+                                            sum =0 
+                                            tdsums = document.querySelectorAll('.td-sum')
+                                            tdsums.forEach(element => {
+                                                sum += (parseFloat(element.innerText))
+                                                console.log(element)
+                                            });
+
+                                            document.getElementById('invested-amt').innerHTML =  `   
+                                                <b>${sum}</b>
+                                            `
+
+                                        });
+
+                                        // function addTransactionToHistory(symbol, shares, price) {
+                                        //     var transactionList = document.getElementById('transactionList');
+                                        //     var transactionItem = document.createElement('li');
+                                        //     transactionItem.classList.add('list-group-item');
+                                        //     transactionItem.innerText = `Transaction: ${symbol} - ${shares} shares @ ${price}`;
+                                        //     transactionList.appendChild(transactionItem);
+                                        // }
+
+                                        function clearTransactionForm() {
+                                            document.getElementById('symbol').value = '';
+                                            document.getElementById('shares').value = '';
+                                            document.getElementById('price').value = '';
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- End Left side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+                <!-- Assistant -->
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Assistant &nbsp; <i class="bi bi-robot"></i> </h5>
+                        <div class="chat">
+                            <div class="chat-content clearfix">
+                                <span class="friend last">
+                                    Hi, How Can I help you?
+                                    <span class="time">
+                                        7:30 PM
+                                    </span>
+                                </span>
+                                <span class="you first">
+                                    Which is the costliest share in the Indian share market?
+                                    <span class="time">
+                                        7:31 PM
+                                    </span>
+                                </span>
+                                <span class="friend last">
+                                    MRF is the costliest share in the Indian share market !
+                                    <span class="time">
+                                        7:31 PM
+                                    </span>
+                                </span>
+                                <br>
+                            </div>
+
+                            <div class="msg-box">
+                                <input type="text" class="ip-msg" placeholder="type something..">
+                                <span class="btn-group">
+                                    <i class="ri-send-plane-fill"></i>
+                                    <i class="bi bi-paperclip"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Assistant  -->
+
+
+
+                <!-- Share holder distribution  -->
+                <div class="card">
+
+                    <div class="card-body pb-0">
+                        <h5 class="card-title"> Your Portfolio distribution <span></span></h5>
+
+                        <div id="trafficChart" style="min-height: 400px" class="echart"></div>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                echarts
+                                    .init(document.querySelector("#trafficChart"))
+                                    .setOption({
+                                        tooltip: {
+                                            trigger: "item",
+                                        },
+                                        legend: {
+                                            top: "5%",
+                                            left: "center",
+                                        },
+                                        series: [
+                                            {
+                                                name: "Access From",
+                                                type: "pie",
+                                                radius: ["40%", "70%"],
+                                                avoidLabelOverlap: false,
+                                                label: {
+                                                    show: false,
+                                                    position: "center",
+                                                },
+                                                emphasis: {
+                                                    label: {
+                                                        show: true,
+                                                        fontSize: "18",
+                                                        fontWeight: "bold",
+                                                    },
+                                                },
+                                                labelLine: {
+                                                    show: false,
+                                                },
+                                                data: [
+                                                    {
+                                                        value: 20,
+                                                        name: "Auto",
+                                                    },
+                                                    {
+                                                        value: 25,
+                                                        name: "Tech",
+                                                    },
+                                                    {
+                                                        value: 55,
+                                                        name: "Health care",
+                                                    }
+                                                ],
+                                            },
+                                        ],
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <!-- End Share holder distribution  -->
+
+
+                <!-- News & Updates Traffic -->
+                <div class="card">
+
+
+                    <!-- End Right side columns -->
+                </div>
+    </section>
+
+
+
+</main>
+<!-- End #main -->
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
+<script src="{{ url_for('static', filename='assets/js/practice.js') }}"></script>
+
+
+
+{% endblock content %}

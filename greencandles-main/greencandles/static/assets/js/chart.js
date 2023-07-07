@@ -33,6 +33,7 @@ function plotChart(data, smaData) {
 
   var legend = document.createElement('div');
   legend.className = 'sma-legend';
+  
   container.appendChild(legend);
   legend.style.display = 'block';
   legend.style.left = 3 + 'px';

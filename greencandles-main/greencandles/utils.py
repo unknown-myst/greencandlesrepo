@@ -99,7 +99,7 @@ def return_csv(symbol):
             pass
     except:
         ticker = yf.Ticker(symbol)  
-        history = ticker.history("max")
+        history = ticker.history("5y")
         history.reset_index(inplace=True)
         history.Date = history['Date'].dt.strftime('%Y-%m-%d')
         history = history[['Date', 'Open', 'High', 'Low', 'Close']]

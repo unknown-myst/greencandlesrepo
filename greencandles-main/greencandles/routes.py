@@ -189,6 +189,16 @@ def strategy():
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('dashboard/strategy.html',image_file=image_file, form=form)
 
+
+
+@app.route("/practice")
+@login_required
+def practice():
+    form = UpdateAccountForm()
+    form.username.data = current_user.username
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('dashboard/practice.html',image_file=image_file, form=form)
+
 @app.route("/stocks/")
 @login_required
 def stocks1():
