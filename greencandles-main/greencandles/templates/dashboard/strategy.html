@@ -1,5 +1,68 @@
 {% extends "dashboard/dbskeleton.html" %}
 {% block content %}
+<style>
+    
+    body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#portfolio {
+  margin-bottom: 30px;
+}
+
+#portfolioTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#portfolioTable th,
+#portfolioTable td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#buySellForm {
+  margin-bottom: 30px;
+}
+
+#buySellForm label,
+#buySellForm input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#buyBtn,
+#sellBtn {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+#transactions {
+  max-width: 400px;
+}
+
+#transactionList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#transactionList li {
+  margin-bottom: 10px;
+}
+
+
+
+.paper-trade.body{
+  width: 5px;
+}
+
+</style>
 
 
 <main id="main" class="main">
@@ -166,71 +229,173 @@
 
 <!-- News & Updates Traffic -->
 <div class="card">  
-    <div class="card-body pb-0">
-      <h5 class="card-title">
-        News &amp; Updates <span>| Today</span>
-      </h5>
+    
   
-      <div class="news">
-        <div class="post-item clearfix">
-          <img src="{{ url_for('static', filename='assets/img/news-1.jpg') }}" alt="" />
-          <h4><a href="#">Indian Stock Market Update: Sensex crosses 60,000 mark</a></h4>
-          <p>
-            The Indian stock market witnessed a historic moment as the Sensex crossed the 60,000 mark for the first time. Experts predict further growth in the coming months.
-          </p>
-        </div>
-  
-        <div class="post-item clearfix">
-          <img src="{{ url_for('static', filename='assets/img/news-2.jpg') }}" alt="" />
-          <h4><a href="#">Top Stocks to Watch: Reliance Industries, Tata Motors, HDFC Bank</a></h4>
-          <p>
-            Here are the top stocks that investors should keep an eye on today. Reliance Industries, Tata Motors, and HDFC Bank are expected to show positive performance.
-          </p>
-        </div>
-  
-        <div class="post-item clearfix">
-          <img src="{{ url_for('static', filename='assets/img/news-3.jpg') }}" alt="" />
-          <h4>
-            <a href="#">SEBI announces new regulations for stock market participants</a>
-          </h4>
-          <p>
-            The Securities and Exchange Board of India (SEBI) has introduced new regulations to ensure transparency and protect investors in the stock market.
-          </p>
-        </div>
-  
-        <div class="post-item clearfix">
-          <img src="{{ url_for('static', filename='assets/img/news-4.jpg') }}" alt="" />
-          <h4><a href="#">RBI cuts repo rate, boosts market sentiment</a></h4>
-          <p>
-            The Reserve Bank of India (RBI) has announced a repo rate cut, which is expected to boost market sentiment and encourage investments in the stock market.
-          </p>
-        </div>
-  
-        <div class="post-item clearfix">
-          <img src="{{ url_for('static', filename='assets/img/news-5.jpg') }}" alt="" />
-          <h4>
-            <a href="#">Stock Market Analysis: Nifty 50 shows bullish trend</a>
-          </h4>
-          <p>
-            The Nifty 50 index has shown a bullish trend, indicating positive market sentiment and potential opportunities for investors in the Indian stock market.
-          </p>
-        </div>
-      </div>
-      <!-- End sidebar recent posts-->
-    </div>
-  </div>
-  <!-- End News & Updates -->
-      </div>
       <!-- End Right side columns -->
     </div>
   </section>
+
+
+
+  <!-- paper trade  -->
+  <!-- <div id="paper-trade">
+    <h1>Paper Trading Platform</h1>
+    
+    <div id="portfolio">
+      <h2>Portfolio</h2>
+      <table id="portfolioTable">
+        <tr>
+          <th>Symbol</th>
+          <th>Shares</th>
+          <th>Price</th>
+          <th>Value</th>
+        </tr>
+      </table>
+    </div>
+    
+    <div id="buySellForm">
+      <h2>Buy/Sell</h2>
+      <form id="transactionForm">
+        <label for="symbol">Symbol:</label>
+        <input type="text" id="symbol" required>
+        
+        <label for="shares">Shares:</label>
+        <input type="number" id="shares" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" id="price" required>
+        
+        <input type="submit" value="Buy" id="buyBtn">
+        <input type="submit" value="Sell" id="sellBtn">
+      </form>
+    </div>
+    
+    <div id="transactions">
+      <h2>Transaction History</h2>
+      <ul id="transactionList"></ul>
+    </div>
+    
+    <script>document.getElementById('transactionForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+    
+      var symbol = document.getElementById('symbol').value;
+      var shares = document.getElementById('shares').value;
+      var price = document.getElementById('price').value;
+    
+      // Perform necessary calculations and update portfolio
+    
+      addTransactionToHistory(symbol, shares, price);
+      clearTransactionForm();
+    });
+    
+    function addTransactionToHistory(symbol, shares, price) {
+      var transactionList = document.getElementById('transactionList');
+      var transactionItem = document.createElement('li');
+      transactionItem.innerText = `Transaction: ${symbol} - ${shares} shares @ $${price}`;
+      transactionList.appendChild(transactionItem);
+    }
+    
+    function clearTransactionForm() {
+      document.getElementById('symbol').value = '';
+      document.getElementById('shares').value = '';
+      document.getElementById('price').value = '';
+    }
+    </script>
+  </div> -->
+  <!-- end paper trade  -->
+  
+
+  <div id="paper-trade">
+    <h1 class="display-4">Paper Trading Platform</h1>
+  
+    <div id="portfolio">
+      <h2>Portfolio</h2>
+      <table id="portfolioTable" class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Portfolio table rows will be dynamically generated here -->
+        </tbody>
+      </table>
+    </div>
+  
+    <div id="buySellForm">
+      <h2>Buy/Sell</h2>
+      <form id="transactionForm">
+        <div class="form-group">
+          <label for="symbol">Symbol:</label>
+          <input type="text" id="symbol" class="form-control" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="shares">Shares:</label>
+          <input type="number" id="shares" class="form-control" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" id="price" class="form-control" required>
+        </div>
+  
+        <button type="submit" class="btn btn-primary" id="buyBtn">Buy</button>
+        <button type="submit" class="btn btn-primary" id="sellBtn">Sell</button>
+      </form>
+    </div>
+  
+    <div id="transactions">
+      <h2>Transaction History</h2>
+      <ul id="transactionList" class="list-group"></ul>
+    </div>
+  
+    <script>
+      document.getElementById('transactionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+  
+        var symbol = document.getElementById('symbol').value;
+        var shares = document.getElementById('shares').value;
+        var price = document.getElementById('price').value;
+  
+        // Perform necessary calculations and update portfolio
+  
+        addTransactionToHistory(symbol, shares, price);
+        clearTransactionForm();
+      });
+  
+      function addTransactionToHistory(symbol, shares, price) {
+        var transactionList = document.getElementById('transactionList');
+        var transactionItem = document.createElement('li');
+        transactionItem.classList.add('list-group-item');
+        transactionItem.innerText = `Transaction: ${symbol} - ${shares} shares @ ${price}`;
+        transactionList.appendChild(transactionItem);
+      }
+  
+      function clearTransactionForm() {
+        document.getElementById('symbol').value = '';
+        document.getElementById('shares').value = '';
+        document.getElementById('price').value = '';
+      }
+    </script>
+  </div>
+
 </main>
 <!-- End #main -->
 
 
 
 
+
+
+
+
 <script src="https://unpkg.com/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
 <script src="{{ url_for('static', filename='assets/js/chart.js') }}"></script>
+
+
 
 {% endblock content %}
