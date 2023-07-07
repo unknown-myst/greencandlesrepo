@@ -1,10 +1,4 @@
-/**
-* Template Name: SWIZ
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
 
@@ -307,15 +301,15 @@
   /**
    * Autoresize echart charts
    */
-  const mainContainer = select('#main');
-  if (mainContainer) {
-    setTimeout(() => {
-      new ResizeObserver(function() {
-        select('.echart', true).forEach(getEchart => {
-          echarts.getInstanceByDom(getEchart).resize();
-        })
-      }).observe(mainContainer);
-    }, 200);
-  }
+  // const mainContainer = select('#main');
+  // if (mainContainer) {
+  //   setTimeout(() => {
+  //     new ResizeObserver(function() {
+  //       select('.echart', true).forEach(getEchart => {
+  //         echarts.getInstanceByDom(getEchart).resize();
+  //       })
+  //     }).observe(mainContainer);
+  //   }, 200);
+  // }
 
 })();
