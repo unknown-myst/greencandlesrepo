@@ -1,0 +1,132 @@
+{% extends "dashboard/dbskeleton.html" %}
+{% block content %}
+<style>
+    
+  .bg-steel {
+    background-color: #5f788a;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+</style>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Community</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('home2') }}">Home</a></li>
+                <li class="breadcrumb-item active">Community</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <div class="row">
+        <div class="col-lg-4">
+          <div class="post-box">
+            <div class="post-img">
+              <img src="/static/eassets/img/blog/blog-1.jpg" class="img-fluid" alt="">
+            </div>
+            <span class="post-date"> July 13</span>
+            <h3 class="post-title">
+              The Power of Dividend Investing
+            </h3>
+            <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+  
+        <div class="col-lg-4">
+          <div class="post-box">
+            <div class="post-img">
+              <img src="/static/eassets/img/blog/blog-2.png" class="img-fluid" alt="">
+            </div>
+            <span class="post-date">July 15</span>
+            <h3 class="post-title">
+              The Beginner's Guide to Stock Market Investing
+            </h3>
+            <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+  
+        <div class="col-lg-4">
+          <div class="post-box">
+            <div class="post-img">
+              <img src="/static/eassets/img/blog/blog-3.webp" class="img-fluid" alt="">
+            </div>
+            <span class="post-date"> July 18</span>
+            <h3 class="post-title">
+              Mastering Risk Management in the Stock Market
+            </h3>
+            <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+</main>
+<!-- End #main -->
+
+{% endblock content %}

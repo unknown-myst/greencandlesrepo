@@ -253,6 +253,8 @@ def get_pie_data(endpoint):
     return jsonify(info)
 
 
+
+
 @app.route('/getListData', methods=['GET'])
 def get_list_data():
     csv_file_path = os.path.join(app.root_path, 'static', 'data','setup', 'final2kcomps.csv')
@@ -274,6 +276,19 @@ def get_list_data():
     json_data = jsonify(list_of_all)
     return json_data
 
+
+@app.route('/community',methods=['GET'])
+def community():
+    posts = Post.query.all()
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template("dashboard/community.html",posts=posts,image_file=image_file)
+
+
+@app.route('/learn',methods=['GET'])
+def learn():
+    posts = Post.query.all()
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template("dashboard/learn.html",posts=posts,image_file=image_file)
 
 
 

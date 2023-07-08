@@ -221,6 +221,9 @@ h1 {
                       ],
                     });
                 });
+
+
+                
               </script>
             </div>
           </div>
@@ -236,152 +239,6 @@ h1 {
   </section>
 
 
-
-  <!-- paper trade  -->
-  <!-- <div id="paper-trade">
-    <h1>Paper Trading Platform</h1>
-    
-    <div id="portfolio">
-      <h2>Portfolio</h2>
-      <table id="portfolioTable">
-        <tr>
-          <th>Symbol</th>
-          <th>Shares</th>
-          <th>Price</th>
-          <th>Value</th>
-        </tr>
-      </table>
-    </div>
-    
-    <div id="buySellForm">
-      <h2>Buy/Sell</h2>
-      <form id="transactionForm">
-        <label for="symbol">Symbol:</label>
-        <input type="text" id="symbol" required>
-        
-        <label for="shares">Shares:</label>
-        <input type="number" id="shares" required>
-        
-        <label for="price">Price:</label>
-        <input type="number" id="price" required>
-        
-        <input type="submit" value="Buy" id="buyBtn">
-        <input type="submit" value="Sell" id="sellBtn">
-      </form>
-    </div>
-    
-    <div id="transactions">
-      <h2>Transaction History</h2>
-      <ul id="transactionList"></ul>
-    </div>
-    
-    <script>document.getElementById('transactionForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-    
-      var symbol = document.getElementById('symbol').value;
-      var shares = document.getElementById('shares').value;
-      var price = document.getElementById('price').value;
-    
-      // Perform necessary calculations and update portfolio
-    
-      addTransactionToHistory(symbol, shares, price);
-      clearTransactionForm();
-    });
-    
-    function addTransactionToHistory(symbol, shares, price) {
-      var transactionList = document.getElementById('transactionList');
-      var transactionItem = document.createElement('li');
-      transactionItem.innerText = `Transaction: ${symbol} - ${shares} shares @ $${price}`;
-      transactionList.appendChild(transactionItem);
-    }
-    
-    function clearTransactionForm() {
-      document.getElementById('symbol').value = '';
-      document.getElementById('shares').value = '';
-      document.getElementById('price').value = '';
-    }
-    </script>
-  </div> -->
-  <!-- end paper trade  -->
-  
-
-  <div id="paper-trade">
-    <h1 class="display-4">Paper Trading Platform</h1>
-  
-    <div id="portfolio">
-      <h2>Portfolio</h2>
-      <table id="portfolioTable" class="table table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th>Symbol</th>
-            <th>Shares</th>
-            <th>Price</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Portfolio table rows will be dynamically generated here -->
-        </tbody>
-      </table>
-    </div>
-  
-    <div id="buySellForm">
-      <h2>Buy/Sell</h2>
-      <form id="transactionForm">
-        <div class="form-group">
-          <label for="symbol">Symbol:</label>
-          <input type="text" id="symbol" class="form-control" required>
-        </div>
-  
-        <div class="form-group">
-          <label for="shares">Shares:</label>
-          <input type="number" id="shares" class="form-control" required>
-        </div>
-  
-        <div class="form-group">
-          <label for="price">Price:</label>
-          <input type="number" id="price" class="form-control" required>
-        </div>
-  
-        <button type="submit" class="btn btn-primary" id="buyBtn">Buy</button>
-        <button type="submit" class="btn btn-primary" id="sellBtn">Sell</button>
-      </form>
-    </div>
-  
-    <div id="transactions">
-      <h2>Transaction History</h2>
-      <ul id="transactionList" class="list-group"></ul>
-    </div>
-  
-    <script>
-      document.getElementById('transactionForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-  
-        var symbol = document.getElementById('symbol').value;
-        var shares = document.getElementById('shares').value;
-        var price = document.getElementById('price').value;
-  
-        // Perform necessary calculations and update portfolio
-  
-        addTransactionToHistory(symbol, shares, price);
-        clearTransactionForm();
-      });
-  
-      function addTransactionToHistory(symbol, shares, price) {
-        var transactionList = document.getElementById('transactionList');
-        var transactionItem = document.createElement('li');
-        transactionItem.classList.add('list-group-item');
-        transactionItem.innerText = `Transaction: ${symbol} - ${shares} shares @ ${price}`;
-        transactionList.appendChild(transactionItem);
-      }
-  
-      function clearTransactionForm() {
-        document.getElementById('symbol').value = '';
-        document.getElementById('shares').value = '';
-        document.getElementById('price').value = '';
-      }
-    </script>
-  </div>
 
 </main>
 <!-- End #main -->

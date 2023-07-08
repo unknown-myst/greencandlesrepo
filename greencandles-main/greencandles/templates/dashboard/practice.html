@@ -123,8 +123,8 @@
                                                 </div>
 
                                                 <button type="submit" class="btn btn-success" id="buyBtn">Buy</button>
-                                                <button type="submit" class="btn btn-danger" id="sellBtn">Sell</button>
                                             </form>
+                                            <button  class="btn btn-danger" id="sellBtn">Sell</button>
                                         </div>
 
                                         <div id="transactions">
@@ -159,8 +159,8 @@
                                     <script>
                                         document.getElementById('transactionForm').addEventListener('submit', function (event) {
                                             event.preventDefault();
-
                                             var symbol = document.getElementById('symbol-name').innerText;
+                                            alert("Do You want to proceed and Buy ",symbol)
                                             var shares = document.getElementById('shares').value;
                                             var price = document.getElementById('dynamic-data-price').innerText;
 
@@ -172,33 +172,43 @@
                                                 <td class="td-sum">${(parseFloat(shares) * parseFloat(price)).toFixed(2)}</td>
                                             </tr>`
                                             tbody.innerHTML += temp_row
-                                            
-                                            sum =0 
+
+                                            sum = 0
                                             tdsums = document.querySelectorAll('.td-sum')
                                             tdsums.forEach(element => {
                                                 sum += (parseFloat(element.innerText))
                                                 console.log(element)
                                             });
 
-                                            document.getElementById('invested-amt').innerHTML =  `   
+                                            document.getElementById('invested-amt').innerHTML = `   
                                                 <b>${sum}</b>
                                             `
 
                                         });
 
-                                        // function addTransactionToHistory(symbol, shares, price) {
-                                        //     var transactionList = document.getElementById('transactionList');
-                                        //     var transactionItem = document.createElement('li');
-                                        //     transactionItem.classList.add('list-group-item');
-                                        //     transactionItem.innerText = `Transaction: ${symbol} - ${shares} shares @ ${price}`;
-                                        //     transactionList.appendChild(transactionItem);
-                                        // }
 
-                                        function clearTransactionForm() {
+                                        function clearTransactionForm() {   
                                             document.getElementById('symbol').value = '';
                                             document.getElementById('shares').value = '';
                                             document.getElementById('price').value = '';
                                         }
+
+
+                                        document.getElementById('sellBtn').addEventListener('click', function () {
+                                             investedAmount =  document.getElementById('invested-amt').innerHTML
+                                             investedAmount = parseFloat(investedAmount)
+
+                                             
+                                            var symbol = document.getElementById('symbol-name').innerText;
+                                            var shares = document.getElementById('shares').value;
+                                            var price = document.getElementById('dynamic-data-price').innerText;
+
+                                            investedAmount = investedAmount - ((parseFloat(shares) * parseFloat(price)).toFixed(2))
+                                            console.log(investedAmount);                                                                        
+                                            document.getElementById('invested-amt').innerHTML = `   
+                                                <b>${investedAmount}</b>`
+
+                                        });
                                     </script>
                                 </div>
                             </div>
@@ -217,38 +227,8 @@
 
                     <div class="card-body">
                         <h5 class="card-title">Assistant &nbsp; <i class="bi bi-robot"></i> </h5>
-                        <div class="chat">
-                            <div class="chat-content clearfix">
-                                <span class="friend last">
-                                    Hi, How Can I help you?
-                                    <span class="time">
-                                        7:30 PM
-                                    </span>
-                                </span>
-                                <span class="you first">
-                                    Which is the costliest share in the Indian share market?
-                                    <span class="time">
-                                        7:31 PM
-                                    </span>
-                                </span>
-                                <span class="friend last">
-                                    MRF is the costliest share in the Indian share market !
-                                    <span class="time">
-                                        7:31 PM
-                                    </span>
-                                </span>
-                                <br>
-                            </div>
-
-                            <div class="msg-box">
-                                <input type="text" class="ip-msg" placeholder="type something..">
-                                <span class="btn-group">
-                                    <i class="ri-send-plane-fill"></i>
-                                    <i class="bi bi-paperclip"></i>
-                                </span>
-                            </div>
-
-                        </div>
+                        <iframe id="avdassis" src="https://www.chatpdf.com/c/XTbeKRwvHmtUcNHVuvdS7" frameborder="0"
+                            style="overflow-x: hidden;width: 100%;height: 500px;"></iframe>
                     </div>
                 </div>
                 <!-- End Assistant  -->

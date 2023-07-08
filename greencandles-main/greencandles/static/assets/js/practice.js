@@ -56,4 +56,4 @@ var chart = LightweightCharts.createChart(document.getElementById('reportsChart'
   fetchData();
   setInterval(fetchData, 60000); // Fetch data every minute
   
-  setInterval(plotNextData, 2000);
+  setInterval(plotNextData, 1500);
